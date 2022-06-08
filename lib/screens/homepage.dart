@@ -1,59 +1,60 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shopping_app/homewidgets.dart/homeheader.dart';
+import 'package:shopping_app/models/listproduct.dart';
+import 'package:shopping_app/pages/toyspage.dart';
+import 'package:shopping_app/widgets/carousel.dart';
+import 'package:shopping_app/widgets/griddata.dart';
 import 'package:shopping_app/widgets/listitems.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+    var itemjson = await rootBundle.loadString("assets/files/list.json");
+    final decodedData = jsonDecode(itemjson);
+    var itemData = decodedData["Products"];
+
+    ListModel.Products = List.from(itemData)
+        .map<ListItem>((item) => ListItem.fromMap(item))
+        .toList();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: ListView(
         children: [
-          ListTile(
-            tileColor: Colors.amber,
-            leading:
-                IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.bars)),
-            trailing: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/harry.JPG"),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 50,
-            width: 400,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 70),
-              child: Row(
-                children: [
-                  Container(
-                    height: 40,
-                    width: 270,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(3),
-                          prefixIcon: Icon(FontAwesomeIcons.search),
-                          hintText: "Search",
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50))),
-                    ),
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.bell,
-                        size: 20,
-                      ))
-                ],
+          HomeHeader(),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Container(
+              color: Color.fromARGB(255, 238, 249, 255),
+              height: 100,
+              child: Text(
+                "Shop \nProducts",
+                style: TextStyle(
+                    fontSize: 35, color: Color.fromARGB(255, 17, 99, 170)),
               ),
             ),
           ),
-          SizedBox(
-            height: 8,
-          ),
-          ListItem()
+          GridItem()
         ],
       ),
     );

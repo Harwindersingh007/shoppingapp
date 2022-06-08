@@ -1,0 +1,41 @@
+{
+    "Products":[
+        {
+            "id":1,
+            "name":"TOYS",
+          "image":"assets/images/teddy.JPG"
+          
+        },
+        {
+            "id":2,
+            "name":"JEWELLERY",
+            "image":"assets/images/jewellery.png"
+            
+        },
+        {
+            "id":3,
+            "name":"FURNITURE",
+            "image":"assets/images/almirah.png"
+            
+        },
+        {
+            "id":4,
+            "name":"GIFT",
+            "image":"assets/images/gift.png"
+            
+        },
+        {
+            "id":5,
+            "name":"MATTRESS",
+          "image":"assets/images/bedroom.png"
+          
+        },
+        {
+            "id":6,
+            "name":"BAGS",
+          "image":"assets/images/bags.png"
+          
+        }
+        
+    ]
+}
