@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -64,8 +66,26 @@ class MyProfile extends StatelessWidget {
                 onPrimary: Color.fromARGB(255, 12, 87, 149),
                 primary: Colors.white),
           ),
-          Row(
-            children: [],
+          SizedBox(
+            height: 50,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: Row(
+              children: [
+                Container(
+                  height: 40,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/icons/icon1.webp"))),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Text("data")
+              ],
+            ),
           )
         ],
       ),
