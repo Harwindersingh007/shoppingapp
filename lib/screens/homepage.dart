@@ -2,13 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shopping_app/homewidgets.dart/homeheader.dart';
 import 'package:shopping_app/models/listproduct.dart';
-import 'package:shopping_app/pages/toyspage.dart';
-import 'package:shopping_app/widgets/carousel.dart';
 import 'package:shopping_app/widgets/griddata.dart';
-import 'package:shopping_app/widgets/listitems.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

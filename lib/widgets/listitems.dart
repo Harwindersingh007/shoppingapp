@@ -17,7 +17,7 @@ class ProductsList extends StatelessWidget {
       children: [
         Container(
           height: 100,
-          width: 62,
+          width: 64,
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.black,

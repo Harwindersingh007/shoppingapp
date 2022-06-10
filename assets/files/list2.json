@@ -1,0 +1,60 @@
+{
+    "Toys":[
+        {
+            "id":1,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+            "image":"assets/toys/teddy1.png"
+          
+        },
+        {
+            "id":2,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+            "image":"assets/toys/teddy2.png"
+            
+        },
+        {
+            "id":3,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+            "image":"assets/toys/teddy3.png"
+            
+        },
+        {
+            "id":4,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+            "image":"assets/toys/teddy4.png"
+            
+        },
+        {
+            "id":5,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+          "image":"assets/toys/teddy5.png"
+          
+        },
+        {
+            "id":6,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+          "image":"assets/toys/teddy6.png"
+          
+        },
+        {
+            "id":7,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+          "image":"assets/toys/teddy7.png"
+        }
+        ,
+        {
+            "id":8,
+            "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
+            "price":99,
+          "image":"assets/toys/teddy8.png"
+        }
+        
+    ]
+}

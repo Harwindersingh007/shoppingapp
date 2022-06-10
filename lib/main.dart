@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shopping_app/models/listproduct.dart';
+import 'package:shopping_app/pages/bag_items.dart';
+import 'package:shopping_app/pages/furniture-items.dart';
+import 'package:shopping_app/pages/giftitems.dart';
+import 'package:shopping_app/pages/jewellerypage.dart';
+import 'package:shopping_app/pages/mattress_items.dart';
 import 'package:shopping_app/pages/toyspage.dart';
 import 'package:shopping_app/screens/cartpage.dart';
 import 'package:shopping_app/screens/homepage.dart';
@@ -59,7 +63,6 @@ class _ShoppingAppState extends State<ShoppingApp> {
                   icon: Icon(FontAwesomeIcons.shoppingCart),
                   label: 'Notifications'),
               BottomNavigationBarItem(
-
                   // ignore: deprecated_member_use
                   icon: Icon(Icons.menu),
                   label: 'Home'),
@@ -71,6 +74,12 @@ class _ShoppingAppState extends State<ShoppingApp> {
         MyRoutes.cartroute: ((context) => const MyCart()),
         MyRoutes.profileroute: ((context) => const MyProfile()),
         MyRoutes.menuroute: ((context) => const MenuPage()),
+        MyRoutes.toypageroute: ((context) => const ToysList()),
+        MyRoutes.jewellerypage: ((context) => const JewelleryList()),
+        MyRoutes.furniturepage: ((context) => const FurnitureList()),
+        MyRoutes.giftpage: ((context) => const GiftList()),
+        MyRoutes.mattresspage: ((context) => const MattressList()),
+        MyRoutes.bagspage: ((context) => const BagList()),
       },
     );
   }
