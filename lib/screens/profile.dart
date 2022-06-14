@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shopping_app/utils/routes.dart';
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -44,7 +43,9 @@ class MyProfile extends StatelessWidget {
             height: 60,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.authpage);
+            },
             child: Text('Sign in'),
             style: ElevatedButton.styleFrom(
                 side: BorderSide(color: Colors.black, width: 2),
@@ -56,7 +57,9 @@ class MyProfile extends StatelessWidget {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.authpage);
+            },
             child: Text('Create account'),
             style: ElevatedButton.styleFrom(
                 side: BorderSide(color: Colors.black, width: 2),
@@ -78,12 +81,87 @@ class MyProfile extends StatelessWidget {
                   width: 50,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/icons/icon1.webp"))),
+                          image: AssetImage("assets/icons/1.png"))),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-                Text("data")
+                Text(
+                  "Check order status and track ,\nchange or return",
+                  style: TextStyle(
+                      color: Color.fromARGB(
+                        255,
+                        6,
+                        78,
+                        137,
+                      ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: Row(
+              children: [
+                Container(
+                  height: 40,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/icons/2.png"))),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Check order status and track ,\nchange or return",
+                  style: TextStyle(
+                      color: Color.fromARGB(
+                        255,
+                        6,
+                        78,
+                        137,
+                      ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: Row(
+              children: [
+                Container(
+                  height: 40,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/icons/3.png"))),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Check order status and track ,\nchange or return",
+                  style: TextStyle(
+                      color: Color.fromARGB(
+                        255,
+                        6,
+                        78,
+                        137,
+                      ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17),
+                )
               ],
             ),
           )

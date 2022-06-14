@@ -150,69 +150,78 @@ class JewelleryItems extends StatelessWidget {
       color: Color.fromARGB(255, 238, 249, 255),
       child: Column(
         children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: JewelleryModel.Jewellery.length,
-              itemBuilder: ((context, index) {
-                final item = JewelleryModel.Jewellery[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(
-                          255,
-                          241,
-                          241,
-                          241,
-                        )),
-                    height: 230,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(18),
-                          height: 220,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(item.image),
-                                  fit: BoxFit.cover),
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: unnecessary_null_comparison
+          (JewelleryModel.Jewellery != null &&
+                  JewelleryModel.Jewellery.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: JewelleryModel.Jewellery.length,
+                  itemBuilder: ((context, index) {
+                    final item = JewelleryModel.Jewellery[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(
+                              255,
+                              241,
+                              241,
+                              241,
+                            )),
+                        height: 230,
+                        child: Row(
                           children: [
-                            Text(
-                              item.desc,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 6, 6, 6)),
+                            Container(
+                              margin: EdgeInsets.all(18),
+                              height: 220,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(item.image),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
-                            RatingBar.builder(
-                                initialRating: 4,
-                                itemSize: 23,
-                                itemBuilder: (context, _) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  );
-                                },
-                                onRatingUpdate: (rating) {}),
-                            Text(
-                              "\$ ${item.price}".toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.desc,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 6, 6, 6)),
+                                ),
+                                RatingBar.builder(
+                                    initialRating: 4,
+                                    itemSize: 23,
+                                    itemBuilder: (context, _) {
+                                      return Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      );
+                                    },
+                                    onRatingUpdate: (rating) {}),
+                                Text(
+                                  "\$ ${item.price}".toString(),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    );
+                  }))
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: CircularProgressIndicator(),
                   ),
-                );
-              })),
+                )
         ],
       ),
     );

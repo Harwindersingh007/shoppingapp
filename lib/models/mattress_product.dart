@@ -1,30 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class MattressModel {
-  static List<MattressItem> Mattress = [];
+class MattModel {
+  static List<MattItem> Matt = [];
 }
 
-class MattressItem {
+class MattItem {
   final int id;
   final int price;
   final String desc;
   final String image;
 
-  MattressItem(
+  MattItem(
     this.id,
     this.price,
     this.desc,
     this.image,
   );
 
-  MattressItem copyWith({
+  MattItem copyWith({
     int? id,
     int? price,
     String? desc,
     String? image,
   }) {
-    return MattressItem(
+    return MattItem(
       id ?? this.id,
       price ?? this.price,
       desc ?? this.desc,
@@ -41,8 +41,8 @@ class MattressItem {
     };
   }
 
-  factory MattressItem.fromMap(Map<String, dynamic> map) {
-    return MattressItem(
+  factory MattItem.fromMap(Map<String, dynamic> map) {
+    return MattItem(
       map['id'] as int,
       map['price'] as int,
       map['desc'] as String,
@@ -52,19 +52,19 @@ class MattressItem {
 
   String toJson() => json.encode(toMap());
 
-  factory MattressItem.fromJson(String source) =>
-      MattressItem.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory MattItem.fromJson(String source) =>
+      MattItem.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'MattressItem(id: $id, price: $price, desc: $desc, image: $image)';
+    return 'MattItem(id: $id, price: $price, desc: $desc, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is MattressItem &&
+    return other is MattItem &&
         other.id == id &&
         other.price == price &&
         other.desc == desc &&

@@ -26,10 +26,10 @@ class _GiftListState extends State<GiftList> {
     await Future.delayed(Duration(seconds: 2));
     var itemjson = await rootBundle.loadString("assets/files/list5.json");
     final decodedData = jsonDecode(itemjson);
-    var itemData = decodedData["Gifts"];
+    var itemData = decodedData["Gif"];
 
-    GiftModel.Gifts = List.from(itemData)
-        .map<GiftItem>((item) => GiftItem.fromMap(item))
+    GifModel.Gif = List.from(itemData)
+        .map<GifItem>((item) => GifItem.fromMap(item))
         .toList();
     setState(() {});
   }
@@ -148,69 +148,77 @@ class GiftItems extends StatelessWidget {
       color: Color.fromARGB(255, 238, 249, 255),
       child: Column(
         children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: GiftModel.Gifts.length,
-              itemBuilder: ((context, index) {
-                final item = GiftModel.Gifts[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(
-                          255,
-                          241,
-                          241,
-                          241,
-                        )),
-                    height: 230,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(18),
-                          height: 220,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(item.image),
-                                  fit: BoxFit.cover),
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: unnecessary_null_comparison
+          (GifModel.Gif != null && GifModel.Gif.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: GifModel.Gif.length,
+                  itemBuilder: ((context, index) {
+                    final item = GifModel.Gif[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(
+                              255,
+                              241,
+                              241,
+                              241,
+                            )),
+                        height: 230,
+                        child: Row(
                           children: [
-                            Text(
-                              item.desc,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 14, 14, 14)),
+                            Container(
+                              margin: EdgeInsets.all(18),
+                              height: 220,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(item.image),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
-                            RatingBar.builder(
-                                initialRating: 4,
-                                itemSize: 23,
-                                itemBuilder: (context, _) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  );
-                                },
-                                onRatingUpdate: (rating) {}),
-                            Text(
-                              "\$ ${item.price}".toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 3, 3, 3)),
-                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.desc,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 14, 14, 14)),
+                                ),
+                                RatingBar.builder(
+                                    initialRating: 4,
+                                    itemSize: 23,
+                                    itemBuilder: (context, _) {
+                                      return Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      );
+                                    },
+                                    onRatingUpdate: (rating) {}),
+                                Text(
+                                  "\$ ${item.price}".toString(),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 3, 3, 3)),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    );
+                  }))
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: CircularProgressIndicator(),
                   ),
-                );
-              })),
+                )
         ],
       ),
     );

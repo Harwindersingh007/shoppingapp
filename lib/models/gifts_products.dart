@@ -1,30 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class GiftModel {
-  static List<GiftItem> Gifts = [];
+class GifModel {
+  static List<GifItem> Gif = [];
 }
 
-class GiftItem {
+class GifItem {
   final int id;
   final int price;
   final String desc;
   final String image;
 
-  GiftItem(
+  GifItem(
     this.id,
     this.price,
     this.desc,
     this.image,
   );
 
-  GiftItem copyWith({
+  GifItem copyWith({
     int? id,
     int? price,
     String? desc,
     String? image,
   }) {
-    return GiftItem(
+    return GifItem(
       id ?? this.id,
       price ?? this.price,
       desc ?? this.desc,
@@ -41,8 +41,8 @@ class GiftItem {
     };
   }
 
-  factory GiftItem.fromMap(Map<String, dynamic> map) {
-    return GiftItem(
+  factory GifItem.fromMap(Map<String, dynamic> map) {
+    return GifItem(
       map['id'] as int,
       map['price'] as int,
       map['desc'] as String,
@@ -52,19 +52,19 @@ class GiftItem {
 
   String toJson() => json.encode(toMap());
 
-  factory GiftItem.fromJson(String source) =>
-      GiftItem.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory GifItem.fromJson(String source) =>
+      GifItem.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'GiftItem(id: $id, price: $price, desc: $desc, image: $image)';
+    return 'GifItem(id: $id, price: $price, desc: $desc, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is GiftItem &&
+    return other is GifItem &&
         other.id == id &&
         other.price == price &&
         other.desc == desc &&

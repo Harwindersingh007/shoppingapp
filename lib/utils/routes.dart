@@ -10,4 +10,5 @@ class MyRoutes {
   static String giftpage = "/gifts";
   static String mattresspage = "/mattresses";
   static String bagspage = "/bags";
+  static String authpage = "/auth";
 }

@@ -27,11 +27,12 @@ class _MattressListState extends State<MattressList> {
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
     var itemjson = await rootBundle.loadString("assets/files/list6.json");
+    print(itemjson);
     final decodedData = jsonDecode(itemjson);
-    var itemData = decodedData["Mattress"];
+    var itemData = decodedData["Matt"];
 
-    MattressModel.Mattress = List.from(itemData)
-        .map<MattressItem>((item) => MattressItem.fromMap(item))
+    MattModel.Matt = List.from(itemData)
+        .map<MattItem>((item) => MattItem.fromMap(item))
         .toList();
     setState(() {});
   }
@@ -150,69 +151,77 @@ class MattressItems extends StatelessWidget {
       color: Color.fromARGB(255, 238, 249, 255),
       child: Column(
         children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: MattressModel.Mattress.length,
-              itemBuilder: ((context, index) {
-                final item = MattressModel.Mattress[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(
-                          255,
-                          241,
-                          241,
-                          241,
-                        )),
-                    height: 230,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(18),
-                          height: 220,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(item.image),
-                                  fit: BoxFit.cover),
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: unnecessary_null_comparison
+          (MattModel.Matt != null && MattModel.Matt.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: MattModel.Matt.length,
+                  itemBuilder: ((context, index) {
+                    final item = MattModel.Matt[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(
+                              255,
+                              241,
+                              241,
+                              241,
+                            )),
+                        height: 230,
+                        child: Row(
                           children: [
-                            Text(
-                              item.desc,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 18, 17, 17)),
+                            Container(
+                              margin: EdgeInsets.all(18),
+                              height: 220,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(item.image),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
-                            RatingBar.builder(
-                                initialRating: 4,
-                                itemSize: 23,
-                                itemBuilder: (context, _) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  );
-                                },
-                                onRatingUpdate: (rating) {}),
-                            Text(
-                              "\$ ${item.price}".toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.desc,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 18, 17, 17)),
+                                ),
+                                RatingBar.builder(
+                                    initialRating: 4,
+                                    itemSize: 23,
+                                    itemBuilder: (context, _) {
+                                      return Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      );
+                                    },
+                                    onRatingUpdate: (rating) {}),
+                                Text(
+                                  "\$ ${item.price}".toString(),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    );
+                  }))
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: CircularProgressIndicator(),
                   ),
-                );
-              })),
+                )
         ],
       ),
     );

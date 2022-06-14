@@ -6,6 +6,7 @@ import 'package:shopping_app/pages/giftitems.dart';
 import 'package:shopping_app/pages/jewellerypage.dart';
 import 'package:shopping_app/pages/mattress_items.dart';
 import 'package:shopping_app/pages/toyspage.dart';
+import 'package:shopping_app/screens/auth_screen.dart';
 import 'package:shopping_app/screens/cartpage.dart';
 import 'package:shopping_app/screens/homepage.dart';
 import 'package:shopping_app/screens/morepage.dart';
@@ -25,12 +26,7 @@ class ShoppingApp extends StatefulWidget {
 
 class _ShoppingAppState extends State<ShoppingApp> {
   int currentIndex = 0;
-  final screens = const [
-    HomePage(),
-    MyProfile(),
-    MyCart(),
-    MenuPage(),
-  ];
+  final screens = const [HomePage(), MyProfile(), MyCart(), MenuPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +53,15 @@ class _ShoppingAppState extends State<ShoppingApp> {
               BottomNavigationBarItem(
                   // ignore: deprecated_member_use
                   icon: Icon(FontAwesomeIcons.user),
-                  label: 'MyNetwork'),
+                  label: 'Profile'),
               BottomNavigationBarItem(
                   // ignore: deprecated_member_use
                   icon: Icon(FontAwesomeIcons.shoppingCart),
-                  label: 'Notifications'),
+                  label: 'Cart'),
               BottomNavigationBarItem(
                   // ignore: deprecated_member_use
                   icon: Icon(Icons.menu),
-                  label: 'Home'),
+                  label: 'Menu'),
             ]),
       ),
       initialRoute: MyRoutes.mainroute,
@@ -80,6 +76,7 @@ class _ShoppingAppState extends State<ShoppingApp> {
         MyRoutes.giftpage: ((context) => const GiftList()),
         MyRoutes.mattresspage: ((context) => const MattressList()),
         MyRoutes.bagspage: ((context) => const BagList()),
+        MyRoutes.authpage: ((context) => const AuthScreen()),
       },
     );
   }

@@ -62,9 +62,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+     - assets/files/list4.json/
+     - assets/files/list6.json
+     - assets/files/list7.json/
+     - assets/files/
      - assets/images/
      - assets/carousels/
-     - assets/files/
      - assets/toys/
      - assets/icons/
      - assets/jewellery/
@@ -72,6 +75,7 @@ flutter:
      - assets/furniture/
      - assets/bags/
      - assets/gifts/
+     
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

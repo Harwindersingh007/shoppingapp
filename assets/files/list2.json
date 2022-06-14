@@ -4,56 +4,56 @@
             "id":1,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-            "image":"assets/toys/teddy1.png"
+            "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKOO-2LwRtI5Nj0SjbG8D4navcCX0rzo5blw&usqp=CAU"
           
         },
         {
             "id":2,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-            "image":"assets/toys/teddy2.png"
+            "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtagZGbAC41FfxbjUHH0itcu1GC2Z6HyYMhw&usqp=CAU"
             
         },
         {
             "id":3,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-            "image":"assets/toys/teddy3.png"
+            "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCJHU6SYFGRlP3tWVshP9_kpK_-LRjUp6CQA&usqp=CAU"
             
         },
         {
             "id":4,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-            "image":"assets/toys/teddy4.png"
+            "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgO5bt04xSqgnFGl-kBT8ucbTwCE4HEZc6ew&usqp=CAU"
             
         },
         {
             "id":5,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-          "image":"assets/toys/teddy5.png"
+          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJTuR7gE8mq7X72mzLKW46tazZ9RBaWAadog&usqp=CAU"
           
         },
         {
             "id":6,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-          "image":"assets/toys/teddy6.png"
+          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTao_Sfj1oSdkX2bDgsJYvHaeqpRlYwrCq1zQ&usqp=CAU"
           
         },
         {
             "id":7,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-          "image":"assets/toys/teddy7.png"
+          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPIY32-jjBzoqHLuFkeEaPK2Lg8OQq8NuO1A&usqp=CAU"
         }
         ,
         {
             "id":8,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-          "image":"assets/toys/teddy8.png"
+          "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyXHFVSzbkrUaYsD1f88CEXk3_S0bZqHcCFw&usqp=CAU"
         }
         
     ]

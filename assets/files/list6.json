@@ -1,10 +1,10 @@
 {
-    "Mattress":[
+    "Matt":[
         {
             "id":1,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-             "image":"assets/mattress/mattress1.png"
+            "image":"assets/mattress/mattress1.png"
           
         },
         {
@@ -53,7 +53,7 @@
             "id":8,
             "desc":"Beifall mich jugendlich\n und ichwie bilder\n ich sich.",
             "price":99,
-            "image":"assets/mattress/mattress8.png"
+            "image":"assets/mattress/mattress7.png"
         }
         
     ]

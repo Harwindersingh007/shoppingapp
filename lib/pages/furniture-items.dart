@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -27,12 +26,10 @@ class _FurnitureListState extends State<FurnitureList> {
     await Future.delayed(Duration(seconds: 2));
     var itemjson = await rootBundle.loadString("assets/files/list4.json");
     final decodedData = jsonDecode(itemjson);
-    var itemData = decodedData["Furniture"];
-    print(itemData);
+    var itemData = decodedData["Furni"];
 
-    FurnitureModel.Furniture = List.from(itemData)
-        .map<FurnitureItem>((item) => FurnitureItem.fromMap(item))
-        .toList();
+    FurniModel.Furni =
+        List.from(itemData).map<Item>((item) => Item.fromMap(item)).toList();
     setState(() {});
   }
 
@@ -150,69 +147,77 @@ class FurnitureItems extends StatelessWidget {
       color: Color.fromARGB(255, 238, 249, 255),
       child: Column(
         children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: FurnitureModel.Furniture.length,
-              itemBuilder: ((context, index) {
-                final item = FurnitureModel.Furniture[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(
-                          255,
-                          241,
-                          241,
-                          241,
-                        )),
-                    height: 230,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(18),
-                          height: 220,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(item.image),
-                                  fit: BoxFit.cover),
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: unnecessary_null_comparison
+          (FurniModel.Furni != null && FurniModel.Furni.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: FurniModel.Furni.length,
+                  itemBuilder: ((context, index) {
+                    final item = FurniModel.Furni[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(
+                              255,
+                              241,
+                              241,
+                              241,
+                            )),
+                        height: 230,
+                        child: Row(
                           children: [
-                            Text(
-                              item.desc,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 14, 14, 14)),
+                            Container(
+                              margin: EdgeInsets.all(18),
+                              height: 220,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(item.image),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
-                            RatingBar.builder(
-                                initialRating: 4,
-                                itemSize: 23,
-                                itemBuilder: (context, _) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  );
-                                },
-                                onRatingUpdate: (rating) {}),
-                            Text(
-                              "\$ ${item.price}".toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 3, 3, 3)),
-                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.desc,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 14, 14, 14)),
+                                ),
+                                RatingBar.builder(
+                                    initialRating: 4,
+                                    itemSize: 23,
+                                    itemBuilder: (context, _) {
+                                      return Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      );
+                                    },
+                                    onRatingUpdate: (rating) {}),
+                                Text(
+                                  "\$ ${item.price}".toString(),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 3, 3, 3)),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    );
+                  }))
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: CircularProgressIndicator(),
                   ),
-                );
-              })),
+                )
         ],
       ),
     );

@@ -30,6 +30,7 @@ class _ToysListState extends State<ToysList> {
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
     var itemjson = await rootBundle.loadString("assets/files/list2.json");
+    print(itemjson);
     final decodedData = jsonDecode(itemjson);
     var itemData = decodedData["Toys"];
 
@@ -155,64 +156,73 @@ class ToysItems extends StatelessWidget {
       color: Color.fromARGB(255, 238, 249, 255),
       child: Column(
         children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: ToyModel.Toys.length,
-              itemBuilder: ((context, index) {
-                final item = ToyModel.Toys[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(255, 241, 241, 241)),
-                    height: 230,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(18),
-                          height: 220,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(item.image),
-                                  fit: BoxFit.cover),
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: unnecessary_null_comparison
+          (ToyModel.Toys != null && ToyModel.Toys.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: ToyModel.Toys.length,
+                  itemBuilder: ((context, index) {
+                    final item = ToyModel.Toys[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(255, 241, 241, 241)),
+                        height: 230,
+                        child: Row(
                           children: [
-                            Text(
-                              item.desc,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0)),
+                            Container(
+                              margin: EdgeInsets.all(18),
+                              height: 220,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(item.image),
+                                      fit: BoxFit.cover),
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
-                            RatingBar.builder(
-                                initialRating: 4,
-                                itemSize: 23,
-                                itemBuilder: (context, _) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  );
-                                },
-                                onRatingUpdate: (rating) {}),
-                            Text(
-                              "\$ ${item.price}".toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 2, 2, 2)),
-                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.desc,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                ),
+                                RatingBar.builder(
+                                    initialRating: 4,
+                                    itemSize: 23,
+                                    itemBuilder: (context, _) {
+                                      return Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      );
+                                    },
+                                    onRatingUpdate: (rating) {}),
+                                Text(
+                                  "\$ ${item.price}".toString(),
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 2, 2, 2)),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    );
+                  }))
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child: CircularProgressIndicator(
+                        backgroundColor: Color.fromARGB(255, 241, 241, 241)),
                   ),
-                );
-              })),
+                )
         ],
       ),
     );
